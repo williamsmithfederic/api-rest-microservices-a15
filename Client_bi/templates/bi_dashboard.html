@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Business Intelligence – Incidents & Absences</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bi.css') }}">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- JS BI -->
+    <script defer src="{{ url_for('static', filename='js/bi.js') }}"></script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="bi-header">
+    <h1>📊 Business Intelligence</h1>
+    <p>Incidents & Absences</p>
+</header>
+
+<!-- KPI -->
+<section class="kpi-container">
+    <div class="kpi-card">
+        <h3>Total incidents</h3>
+        <span id="kpi-incidents">--</span>
+    </div>
+
+    <div class="kpi-card">
+        <h3>Total absences</h3>
+        <span id="kpi-absences">--</span>
+    </div>
+
+    <div class="kpi-card">
+      <h3>Total interventions</h3>
+        <span id="kpi-interventions">--</span>
+    </div>
+
+    <div class="kpi-card">
+       <h3>Total revenus</h3>
+          <span id="kpi-revenue">--</span>
+    </div>
+</section>
+
+<!-- GRAPHS -->
+<section class="charts-grid">
+
+    <!-- INCIDENTS -->
+    <div class="chart-card">
+        <h3>Incidents par type</h3>
+        <div class="chart-box">
+            <canvas id="incidentsChart"></canvas>
+        </div>
+    </div>
+
+    <!-- ABSENCES -->
+    <div class="chart-card">
+        <h3>Absences par type</h3>
+        <div class="chart-box small">
+            <canvas id="absencesChart"></canvas>
+        </div>
+    </div>
+
+
+    <!-- ABSENCES type de graphe bar-->
+    <div class="chart-card large">large
+        <h3>Absences par type Graphe Bar </h3>
+        <div class="chart-box large">
+            <canvas id="absencesChart_bar"></canvas>
+        </div>
+    </div>
+
+    <!-- STATE SERVICE FAIT -->
+
+    <div class="chart-card">
+    <h3>Interventions par jour</h3>
+    <div class="chart-box">
+        <canvas id="interventionsChart"></canvas>
+    </div>
+</div>
+
+
+</section>
+
+</body>
+</html>

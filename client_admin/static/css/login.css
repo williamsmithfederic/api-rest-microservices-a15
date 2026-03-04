@@ -1,0 +1,27 @@
+/* LOGIN  */
+.login-container { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #f6f7fb; padding: 20px; }
+.login-box { background: white; padding: 40px; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.15); max-width: 400px; width: 100%; }
+.login-logo { text-align: center; margin-bottom: 20px; }
+.login-logo i { font-size: 48px; color: #114daa; }
+.login-header { text-align: center; margin-bottom: 30px; }
+.login-header h1 { color: #114daa; font-size: 28px; margin: 0 0 8px; }
+.form-group { margin-bottom: 20px; position: relative; }
+.form-group label { display: block; font-weight: 600; margin-bottom: 8px; }
+.login-input { width: 90%; padding: 12px 16px; border: 1px solid #ccc; border-radius: 8px; }
+.login-input:focus { outline: none; border-color: #114daa; }
+.toggle-password { position: absolute; right: 12px; top: 38px; background: none; border: none; cursor: pointer; color: #666; }
+.forgot-password { color: #114daa; text-decoration: none; font-size: 14px; }
+.login-btn { width: 100%; padding: 14px; background: #114daa; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+.login-btn:hover { background: #0d3a85; }
+.error-message { background: #ffebee; color: #c62828; padding: 10px; border-radius: 8px; margin-bottom: 20px; display: none; }
+.error-message.active { display: block; }
+.login-footer { text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; color: #666; font-size: 14px; }
+@media (max-width: 480px) { .login-box { padding: 30px 20px; } }.error-message {
+    background-color: #ffe6e6;
+    color: #cc0000;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+

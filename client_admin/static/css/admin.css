@@ -1,0 +1,384 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #f4f6fb;
+    color: #333;
+}
+
+/* PAGE */
+.admin-page {
+    padding: 40px;
+}
+
+.admin-header {
+    padding: 20px 40px;
+    background: #114daa;
+    color: white;
+}
+
+
+/* TABS */
+.tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.tab-btn {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 10px;
+    background: #e0e4f7;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+    background: #cfd6f5;
+}
+
+.tab-btn.active {
+    background: #114daa;
+    color: white;
+}
+
+/* CONTENT */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* TABLE CARD */
+.table-container {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #114daa;
+    color: white;
+}
+
+th, td {
+    padding: 14px 16px;
+    text-align: left;
+}
+
+tbody tr {
+    border-bottom: 1px solid #eee;
+}
+
+tbody tr:hover {
+    background: #f2f4ff;
+}
+
+
+/* PRIORITY BADGES */
+.priority {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+}
+
+/* LOW */
+.priority.low {
+    background: #e8f7ef;
+    color: #2ecc71;
+}
+
+/* MEDIUM */
+.priority.medium {
+    background: #fff3e0;
+    color: #f39c12;
+}
+
+/* HIGH */
+.priority.high {
+    background: #fdecea;
+    color: #e74c3c;
+}
+
+/* =========================
+   STATUT BADGES
+   ========================= */
+
+.statut {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+}
+
+/* OUVERT - ROUGE */
+.statut.ouvert {
+    background: #fdecea;
+    color: #e74c3c;
+}
+
+/* EN COURS - ORANGE */
+.statut.encours {
+    background: #fff3e0;
+    color: #f39c12;
+}
+
+/*réouvert - ORANGE */
+.statut.réouvert {
+    background: #fff3e0;
+    color: #f39c12;
+}
+
+/* CLOS - VERT */
+.statut.clos {
+    background: #e8f7ef;
+    color: #2ecc71;
+}
+
+/* =========================
+   MODAL UPDATE
+   ========================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* Animation pour l'ouverture */
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 600px;          /* ← AVANT: 400px, APRÈS: 600px */
+    max-width: 90%;
+    max-height: 85vh;      /* ← AJOUTER: limite la hauteur à 85% de l'écran */
+    overflow-y: auto;      /* ← AJOUTER: scroll si contenu trop grand */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #114daa;
+    font-size: 20px;
+}
+
+.modal-content form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.modal-content form select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e4f7;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+    background: white;
+}
+
+.modal-content form select:focus {
+    outline: none;
+    border-color: #114daa;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.modal-actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.modal-actions button[type="button"]:first-child {
+    background: #e0e4f7;
+    color: #333;
+}
+
+.modal-actions button[type="button"]:first-child:hover {
+    background: #cfd6f5;
+}
+
+.modal-actions button[type="button"]:last-child {
+    background: #114daa;
+    color: white;
+}
+
+.modal-actions button[type="button"]:last-child:hover {
+    background: #0d3d8a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(17, 77, 170, 0.3);
+}
+
+.btn-update {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #114daa;
+    color: white;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.btn-update:hover {
+    background: #0d3d8a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(17, 77, 170, 0.3);
+}
+
+/* Fermer le modal en cliquant sur le fond */
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+}
+
+/* TEXTAREA STYLES */
+.modal-content textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e4f7;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+}
+
+.modal-content textarea:focus {
+    outline: none;
+    border-color: #114daa;
+}
+
+.modal-content textarea:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+    color: #666;
+}
+
+
+
+
+/* style Logout */
+
+.admin-header {
+    padding: 20px 40px;
+    background: #114daa;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Partie gauche */
+.header-left h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.header-left p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Bouton déconnexion */
+.logout-btn {
+    font-size: 22px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;        /* ← AJOUTER pour animation */
+}
+
+.logout-btn:hover {
+    color: #dc4242;
+    transform: scale(1.1);
+}
+
+/* button refersh  */
+
+.intervention-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.btn-refresh {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    background-color: #278BF5;
+    color: white;
+    transition: 0.3s ease;
+}
+
+.btn-refresh:hover {
+    background-color: #174a96;
+    transform: rotate(180deg);
+}

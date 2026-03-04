@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin – Incidents & Absences</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <script defer src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</head>
+<body>
+
+ <!-- HEADER -->
+    <header class="admin-header">
+            <div>
+               <h1>📊Web Service Administration</h1>
+               <p>Incidents & Absences</p>
+            </div>
+        <a href="{{ url_for('logout') }}" class="logout-btn" id="logoutBtn" title="Déconnexion">➡️ déconnexion</a>
+
+    </header>
+
+<div class="admin-page">
+
+    <!-- ONGLES -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showTab(event, 'incidents')">🚨 Incidents</button>
+        <button class="tab-btn" onclick="showTab(event, 'absences')">📅 Absences</button>
+        <button class="tab-btn" onclick="showTab(event, 'interventions')"> 🛠 Interventions</button>
+        <button class="btn-refresh" onclick="refreshInterventions()" title="Rafraîchir">🔄</button>
+
+    </div>
+
+    <!-- INCIDENTS -->
+    <div id="incidents" class="tab-content active">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th><th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Type</th>
+                        <th>Priorité</th>
+
+                        <th>Date déclaration</th>
+                        <th>Date clôture</th>
+                        <th>statut</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in incidents %}
+                    <tr data-priority="{{ i.priorite|lower }}">
+                        <td>{{ i.id }}</td>
+                        <td>{{ i.nom }}</td>
+                        <td>{{ i.prenom }}</td>
+                        <td>{{ i.type_incident }}</td>
+                         <td>
+                            <span class="priority {{ i.priorite|lower }}">
+                              {{ i.priorite }}
+                            </span>
+                         </td>
+
+                        <td>{{ i.date_incident }}</td>
+                        <td>{{ i.date_cloture if i.date_cloture else '-' }}</td>
+                        <td>
+                          <span class="statut {{ i.statut|lower|replace(' ', '') }}">
+                           {{ i.statut }}
+                          </span>
+                         </td>
+                         <td>
+                         <button class="btn-update"
+                         onclick="openUpdateModal({{ i.id }}, '{{ i.statut }}', '{{ i.description }}', '{{ i.description_admin or '' }}')">
+                         ✏️ Update
+                         </button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- MODAL UPDATE STATUT -->
+<div id="updateModal" class="modal">
+  <div class="modal-content">
+    <h3>Modifier le statut</h3>
+
+    <form id="updateForm">
+      <input type="hidden" id="incidentId">
+
+      <label for="newStatut">Statut</label>
+      <select id="newStatut">
+             <option value="Ouvert">Ouvert</option>
+             <option value="En cours">En cours</option>
+             <option value="Clos">Clos</option>
+             <option value="Réouvert">Réouvert</option>
+      </select>
+
+        <label for="descriptionClient">Description du déclarant de l’incident : </label>
+        <textarea id="descriptionClient" rows="3" disabled style="background-color: #f5f5f5; cursor: not-allowed;"></textarea>
+
+        <label for="descriptionAdmin">Description de l’intervenant : </label>
+        <textarea id="descriptionAdmin" rows="4" placeholder="Ajouter un commentaire..."></textarea>
+
+      <div class="modal-actions">
+        <button type="button" onclick="closeModal()">Annuler</button>
+        <button type="button" onclick="updateStatut()">Enregistrer</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+    <!-- ABSENCES -->
+    <div id="absences" class="tab-content">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th><th>Nom</th><th>Prénom</th>
+                        <th>Type absence</th>
+                        <th>Date début</th><th>Date fin</th>
+                        <th>Description</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a in absences %}
+                    <tr>
+                        <td>{{ a.id }}</td>
+                        <td>{{ a.nom }}</td>
+                        <td>{{ a.prenom }}</td>
+                        <td>{{ a.type_absence }}</td>
+                        <td>{{ a.date_debut }}</td>
+                        <td>{{ a.date_fin }}</td>
+                        <td>{{ a.description }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- service_fait -->
+
+    <div id="interventions" class="tab-content">
+      <div class="table-container">
+         <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom Client</th>
+                    <th>Commentaire intervenant </th>
+                    <th>Total Facture</th>
+                    <th>Date Service-fait</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in services_fait %}
+                <tr>
+                    <td>{{ s.id }}</td>
+                    <td>{{ s.nom }}</td>
+                    <td>{{ s.commentaire }}</td>
+                    <td>{{ s.total }} $</td>
+                    <td>{{ s.date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</div>
+
+</body>
+</html>

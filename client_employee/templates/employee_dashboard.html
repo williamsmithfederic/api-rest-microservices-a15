@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Interface Employé</title>
+
+    <!-- CSS ADMIN (réutilisé) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/employee.css') }}">
+
+    <!-- JS onglets -->
+    <script defer src="{{ url_for('static', filename='js/employee.js') }}"></script>
+</head>
+<body>
+
+   <!-- HEADER -->
+    <header class="admin-header">
+
+       <div>
+         <h1>📊 Web Service – Gestion Incidents & Absences </h1>
+         <p>Interface Employé</p>
+       </div>
+
+         <a href="{{ url_for('logout') }}" class="logout-btn" id="logoutBtn" title="Déconnexion">➡️ déconnexion</a>
+
+
+    </header>
+
+<div class="admin-page">
+
+
+    <!-- ONGLES -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('incident')">🚨 + Incident</button>
+        <button class="tab-btn" onclick="showTab('absence')">📅 + Absence</button>
+    </div>
+
+    <!-- INCIDENT FORM -->
+    <div id="incident" class="tab-content active">
+        <div class="table-container">
+            <h2>🚨 Déclarer un incident</h2>
+
+            <form method="POST" action="/envoyer_incident" id="Form">
+
+                <label>Nom</label>
+                <input type="text" name="nom" required>
+
+                <label>Prénom</label>
+                <input type="text" name="prenom" required>
+
+                <label>Type d'incident</label>
+<select name="type_incident" required>
+    <option value="">-- Choisir --</option>
+
+    <!-- Sécurité & santé -->
+    <option>Chute / glissade</option>
+    <option>Blessure (coupure, choc)</option>
+    <option>Malaise sur le lieu de travail</option>
+    <option>Exposition à produit chimique</option>
+    <option>Brûlure</option>
+
+    <!-- Matériel & produits -->
+    <option>Panne de matériel</option>
+    <option>Matériel défectueux</option>
+    <option>Perte ou vol de matériel</option>
+    <option>Rupture de produits de nettoyage</option>
+    <option>Produit de nettoyage inadapté</option>
+    <option>Mauvais dosage de produit</option>
+
+    <!-- Client & site -->
+    <option>Dégradation de biens du client</option>
+    <option>Casse ou perte d’objet du client</option>
+    <option>Réclamation client</option>
+    <option>Accès impossible au site</option>
+    <option>Problème de clé / badge</option>
+
+    <!-- Organisation -->
+    <option>Absence du personnel</option>
+    <option>Retard d’intervention</option>
+    <option>Erreur de planning</option>
+    <option>Intervention non planifiée</option>
+    <option>Non-respect des consignes</option>
+
+    <!-- Autres -->
+    <option>Incident environnemental</option>
+    <option>Incendie</option>
+    <option>Autre</option>
+</select>
+
+                <label>Priorité</label>
+                <select name="priorite" required>
+                    <option value="">-- Choisir --</option>
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                </select>
+                <label>Description</label>
+                <textarea name="description" rows="4" required></textarea>
+
+                 <div class="tabs_s">
+                   <button class="tab-btn active_s" type="submit">Envoyer</button>
+                   <button class="tab-btn annuler" href="">Annuler</button>
+                 </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ABSENCE FORM -->
+    <div id="absence" class="tab-content">
+        <div class="table-container">
+            <h2>📅 Déclarer une absence</h2>
+
+            <form method="POST" action="/envoyer_absence" id="Form2">
+
+                <label>Nom</label>
+                <input type="text" name="nom" required>
+
+                <label>Prénom</label>
+                <input type="text" name="prenom" required>
+
+                <label>Type d'absence</label>
+                <select name="type_absence" required>
+                    <option value="">-- Choisir --</option>
+                    <option>Maladie</option>
+                    <option>Congé payé</option>
+                    <option>Congé sans solde</option>
+                    <option>Rendez-vous médical</option>
+                    <option>Autre</option>
+                </select>
+
+                <label>Date début</label>
+                <input type="date" name="date_debut" required>
+
+                <label>Date fin</label>
+                <input type="date" name="date_fin" required>
+
+                <label>Description</label>
+                <textarea name="description" rows="4"></textarea>
+
+
+                <div class="tabs_s">
+                  <button class="tab-btn active_s" type="submit">Envoyer</button>
+                  <button class="tab-btn annuler" href="">Annuler</button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

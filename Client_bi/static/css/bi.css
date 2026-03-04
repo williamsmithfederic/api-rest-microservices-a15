@@ -1,0 +1,67 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+}
+
+.bi-header {
+    padding: 20px 40px;
+    background: #114daa;
+    color: white;
+}
+
+.kpi-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px 40px;
+}
+
+.kpi-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 200px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.1);
+}
+
+.kpi-card span {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 30px 40px;
+}
+
+.chart-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+.chart-card.full {
+    grid-column: span 2;
+}
+
+.chart-box {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* Taille normale (bar chart) */
+.chart-box.large {
+    height: 420px;
+}
+
+/* Taille réduite pour pie chart */
+.chart-box.small {
+    height: 300px;
+    max-width: 420px;
+    margin: auto;
+}

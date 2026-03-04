@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Déclaration Incidents & Absences</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/employee.css') }}">
+    <script defer src="{{ url_for('static', filename='js/employee.js') }}"></script>
+
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-logo">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+
+            <div class="login-header">
+                <h1>Connexion</h1>
+                <h1>Web Service API REST</h1>
+            </div>
+
+            <div class="error-message" id="errorMessage">
+                <i class="fas fa-exclamation-circle"></i> Identifiants incorrects
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username"><i class="fas fa-user"></i> Identifiant</label>
+                    <input type="text" id="username" class="login-input" placeholder="Entrez votre identifiant" required>
+                </div>
+
+                <div class="form-group password-toggle">
+                    <label for="password"><i class="fas fa-lock"></i> Mot de passe</label>
+                    <input type="password" id="password" class="login-input" placeholder="Entrez votre mot de passe" required>
+
+
+                    </button>
+                </div>
+
+                <div class="remember-forgot">
+
+                    <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Se connecter
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <p>© 2025 - Déclaration Incidents & Absences - Version 1.0 </p>
+                <p>Copie Right -DAO</p>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
